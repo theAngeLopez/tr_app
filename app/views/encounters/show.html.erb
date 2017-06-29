@@ -1,2 +1,14 @@
-<h1>Encounters#show</h1>
-<p>Find me in app/views/encounters/show.html.erb</p>
+<h1>Encounter Details</h1>
+
+<%= link_to "Back to Patient", patient_url(@encounter.patient_id) %>
+<%= link_to "Edit", edit_patient_encounter_path(@encounter.patient_id, @encounter) %>
+<%= link_to "Delete", patient_encounter_path(@encounter), data: {confirm: "Are you sure you want to delete this encounter?"}, method: :delete  %>
+
+<ul>
+  <li>Visit Number: <%= @encounter.visit_number %></li>
+  <li>Admitted At: <%= @encounter.admitted_at %></li>
+  <li>Discharged At: <%= @encounter.discharged_at %></li>
+  <li>Location: <%= @encounter.location %></li>
+  <li>Room: <%= @encounter.room %></li>
+  <li>Bed: <%= @encounter.bed %></li>
+</ul>

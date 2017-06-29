@@ -1,4 +1,4 @@
-<h1>Update Patient Profile</h1>
+<h1>Add a Patient</h1>
 
 <div class="error-message">
   <% if @patient.errors.any? %>
@@ -40,5 +40,6 @@
     <%= f.text_field :mrn %>
   </p>
 
-  <%= f.submit "Save" %>
+  <%= f.submit "Save new Patient" %>
+  <%= f.submit "Cancel" %>
 <% end %>

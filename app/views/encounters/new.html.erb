@@ -1,4 +1,4 @@
-<h1>Update Encounter</h1>
+<h1>Add an Encounter</h1>
 
 <div class="error-message">
   <% if @encounter.errors.any? %>
@@ -10,6 +10,7 @@
 </div>
 
 <%= form_for [@patient, @encounter] do |f| %>
+
   <p>
     <%= f.label :visit_number %>
     <%= f.text_field :visit_number %>
@@ -40,5 +41,6 @@
     <%= f.number_field :bed %>
   </p>
 
-  <%= f.submit "Save" %>
+  <%= f.submit "Save new Encounter" %>
+  <%= f.submit "Cancel" %>
 <% end %>
