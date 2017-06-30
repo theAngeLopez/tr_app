@@ -1,17 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  first_name: MyString
-  middle_name: MyString
-  last_name: MyString
-  weight: 1
-  height: 1
-  mrn: MyString
+ id: 1
+ mrn: "THC123"
+ first_name: "James"
+ middle_name: "John"
+ last_name: "Smith"
+ weight: 85
+ height: 180
 
 two:
-  first_name: MyString
-  middle_name: MyString
-  last_name: MyString
-  weight: 1
-  height: 1
-  mrn: MyString
+ id: 2
+ mrn: "THC124"
+ first_name: "Sandy"
+ middle_name: "Aria"
+ last_name: "Mits"
+ weight: 55
+ height: 145

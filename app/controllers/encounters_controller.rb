@@ -1,6 +1,6 @@
 class EncountersController < ApplicationController
-  before_action :cancel_check, only: [:create]
-  before_action :set_patient, except: [:show, :destroy]
+  before_action :cancel_check, only: [:create, :update]
+  before_action :set_patient, except: [:destroy]
   before_action :set_encounter, except: [:new, :create]
 
   def show
@@ -26,7 +26,7 @@ class EncountersController < ApplicationController
 
   def update
     if @encounter.update_attributes(encounter_params)
-      redirect_to patient_encounter_path(@encounter)
+      redirect_to patient_encounter_path(@patient)
     else
       render :edit
     end

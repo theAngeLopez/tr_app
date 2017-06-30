@@ -1,17 +1,36 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  visit_number: MyString
-  admitted_at: 2017-06-29 09:56:06
-  discharged_at: 2017-06-29 09:56:06
-  location: MyString
-  room: MyString
-  bed: 1
+ visit_number: "VN0001"
+ admitted_at: 1999-01-08 04:05:06
+ discharged_at: 1999-01-08 10:05:06
+ location: "Fifth Ward"
+ room: 189
+ bed: 3
+ patient_id: 1
 
 two:
-  visit_number: MyString
-  admitted_at: 2017-06-29 09:56:06
-  discharged_at: 2017-06-29 09:56:06
-  location: MyString
-  room: MyString
-  bed: 1
+ visit_number: "VN0002"
+ admitted_at: 1999-01-08 10:05:30
+ discharged_at: 1999-01-08 04:24:30
+ location: "ICU"
+ room: 133
+ bed: 2
+ patient_id: 1
+
+three:
+ visit_number: "VN0003"
+ admitted_at: 1999-01-08 04:24:30
+ discharged_at: null
+ location: "ER"
+ room: 3
+ bed: 5
+ patient_id: 2
+
+four:
+ visit_number: "VN0004"
+ admitted_at: 1999-01-08 04:24:06
+ discharged_at: 1999-01-08 04:05:06
+ location: "Fourth Ward"
+ room: 2323
+ bed: 3
+ patient_id: 2
