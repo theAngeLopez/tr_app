@@ -1,20 +1,16 @@
 class EncountersController < ApplicationController
-
-  def index
-    @encounters = Encounter.all
-  end
+  before_action :cancel_check, only: [:create]
+  before_action :set_patient, except: [:show, :destroy]
+  before_action :set_encounter, except: [:new, :create]
 
   def show
-    @encounter = Encounter.find(params[:id])
   end
 
   def new
-    @patient = Patient.find(params[:patient_id])
     @encounter = Encounter.new
   end
 
   def create
-    @patient = Patient.find(params[:patient_id])
     @encounter = Encounter.new(encounter_params)
     @encounter.patient = @patient
 
@@ -26,14 +22,9 @@ class EncountersController < ApplicationController
   end
 
   def edit
-    @patient = Patient.find(params[:patient_id])
-    @encounter = Encounter.find(params[:id])
   end
 
   def update
-    @patient = Patient.find(params[:patient_id])
-    @encounter = Encounter.find(params[:id])
-
     if @encounter.update_attributes(encounter_params)
       redirect_to patient_encounter_path(@encounter)
     else
@@ -42,12 +33,27 @@ class EncountersController < ApplicationController
   end
 
   def destroy
-    @encounter = Encounter.find(params[:id])
     @encounter.destroy
     redirect_to patient_path(@encounter.patient_id), notice: "Encounter has been deleted"
   end
 
   private
+  def set_patient
+    @patient = Patient.find(params[:patient_id])
+  end
+
+  def set_encounter
+    @encounter = Encounter.find(params[:id])
+  end
+
+  def cancel_check
+    @patient = Patient.find(params[:patient_id])
+
+    if params[:commit] == "Cancel"
+      redirect_to patient_path(@patient)
+    end
+  end
+
   def encounter_params
     params.require(:encounter).permit(:visit_number, :admitted_at, :discharged_at, :location, :room, :bed, :patient_id)
   end

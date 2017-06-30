@@ -2,6 +2,8 @@
 
 <h1>Patient Details</h1>
 
+<%= flash[:notice] %>
+
 <ul>
   <li>First Name: <%= @patient.first_name %></li>
   <li>Middle Name: <%= @patient.middle_name %></li>
@@ -17,7 +19,6 @@
 
 <table>
   <tr>
-    <th>ID</th>
     <th>Visit Number</th>
     <th>Admitted At</th>
     <th>Discharged At</th>
@@ -26,7 +27,6 @@
 
   <% @patient.encounters.each do |encounter| %>
     <tr>
-      <td><%= encounter.id %></td>
       <td><%= encounter.visit_number %></td>
       <td><%= encounter.admitted_at %></td>
       <td><%= encounter.discharged_at %></td>

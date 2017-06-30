@@ -1,12 +1,12 @@
 class PatientsController < ApplicationController
   before_action :cancel_check, only: [:create, :update]
+  before_action :set_patient, except: [:index, :new, :create]
 
   def index
     @patients = Patient.all
   end
 
   def show
-    @patient = Patient.find(params[:id])
   end
 
   def new
@@ -24,17 +24,25 @@ class PatientsController < ApplicationController
   end
 
   def edit
-    @patient = Patient.find(params[:id])
   end
 
   def update
-    @patient = Patient.find(params[:id])
-
     if @patient.update_attributes(patient_params)
-      redirect_to "/patients/#{@patient.id}"
+      redirect_to patient_path(@patient)
     else
       render :edit
     end
+  end
+
+
+  def destroy
+    @patient.destroy
+    redirect_to root_path, notice: "Patient and their encounters have been deleted"
+  end
+
+  private
+  def set_patient
+    @patient = Patient.find(params[:id])
   end
 
   def cancel_check
@@ -43,13 +51,6 @@ class PatientsController < ApplicationController
     end
   end
 
-  def destroy
-    @patient = Patient.find(params[:id])
-    @patient.destroy
-    redirect_to root_path, notice: "Patient and their encounters have been deleted"
-  end
-
-  private
   def patient_params
     params.require(:patient).permit(:first_name, :middle_name, :last_name, :weight, :height, :mrn)
   end
