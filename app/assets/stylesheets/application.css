@@ -18,3 +18,7 @@ li {
   list-style-type: none;
   margin: 10px;
 }
+
+.error-message, .notice-message {
+  background-color: #C7EFCF;
+}
